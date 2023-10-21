@@ -1,5 +1,6 @@
 <?php 
     error_reporting(E_ERROR);
+    require ('connexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +21,7 @@
                     if (isset($_GET['idetudiant'])) {
                         $nom = "";
                         $id = $_GET['idetudiant'];
-                        $link = mysqli_connect("localhost","root","","schools");
-                        if ($link === false) {
-                            die("ERROR : could not connect.". mysqli_connect_error());
-                        }
+                        
                         $requete = "SELECT * FROM etudiant WHERE id=$id";
                         $resultat = mysqli_query($link, $requete);
                         $row = mysqli_fetch_assoc($resultat);
@@ -50,10 +48,7 @@
                             <select name="filiere" id="filiere" class="form-select">
                                 <option value="">Selectionner votre filère.... </option>
                                 <?php
-                                    $link = mysqli_connect("localhost","root","","schools");
-                                    if ($link === false) {
-                                        die("ERROR : could not connect.". mysqli_connect_error());
-                                    }
+                                   
                                     $requete = "SELECT * FROM filiere ORDER BY libelle";
                                     $resultat = mysqli_query($link, $requete);
                                     while ($row1 = mysqli_fetch_assoc($resultat)) {
