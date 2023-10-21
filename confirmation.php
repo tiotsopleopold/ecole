@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <?php
+        require ('connexion.php');
             $nom = "";
             $datenaissance = " ";
             $matricule = " ";
@@ -46,10 +47,8 @@
                 $sportif = 0;
             }
 
-            $link = mysqli_connect("localhost","root","","schools");
-            if ($link === false) {
-                die("ERROR : could not connect.". mysqli_connect_error());
-            }
+           
+            
 
             if (strlen($id) == 0) {
                 $sql = "INSERT INTO etudiant(nom, matricule, date_naissance, sportif, email, sexe, idfiliere) 
